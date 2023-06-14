@@ -337,13 +337,13 @@ func (a *Account) ViewFunction(accountId, methodName string, argsBuf []byte, opt
 }
 
 type VeiwAccount struct {
-	Amount        string `json:"amount"`
-	BlockHash     string `json:"block_hash"`
-	BlockHeight   int    `json:"block_height"`
-	CodeHash      string `json:"code_hash"`
-	Locked        string `json:"locked"`
-	StoragePaidAt int    `json:"storage_paid_at"`
-	StorageUsage  int    `json:"storage_usage"`
+	Amount        string `mapstructure:"amount"`
+	BlockHash     string `mapstructure:"block_hash"`
+	BlockHeight   int    `mapstructure:"block_height"`
+	CodeHash      string `mapstructure:"code_hash"`
+	Locked        string `mapstructure:"locked"`
+	StoragePaidAt int    `mapstructure:"storage_paid_at"`
+	StorageUsage  int    `mapstructure:"storage_usage"`
 }
 
 func (a *Account) GetBalance(accountId string) (string, error) {
@@ -407,8 +407,8 @@ func (a *Account) AccountView(accountId string) (VeiwAccount, error) {
 
 type RuntimeConfig struct {
 	RuntimeConfig struct {
-		StorageAmountPerByte string `json:"storage_amount_per_byte"`
-	} `json:"runtime_config"`
+		StorageAmountPerByte string `mapstructure:"storage_amount_per_byte"`
+	} `mapstructure:"runtime_config"`
 }
 
 func (a *Account) getRuntimeConfig() (RuntimeConfig, error) {
